@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9061f9" />
+      <stop offset="100%" stop-color="#581c87" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Vibrant rounded container that stands out on both light and dark browser tabs -->
+  <rect width="32" height="32" rx="8" fill="url(#purpleGrad)" />
+  
+  <!-- Shield emblem -->
+  <path d="M16 5.2L23.5 8.5V14.8C23.5 19.8 20.3 24.2 16 25.8C11.7 24.2 8.5 19.8 8.5 14.8V8.5L16 5.2Z" fill="#1a102f" stroke="#e9d5ff" stroke-width="1.4" stroke-linejoin="round" />
+  
+  <!-- Bright Green Checkmark -->
+  <path d="M12.5 15.2L15 17.8L20 12.2" fill="none" stroke="#34d399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+</svg>
