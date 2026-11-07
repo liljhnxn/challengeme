@@ -170,7 +170,7 @@ export function CompleteModal({
           {isConfirming && (
             <div className="flex items-center gap-2 p-3 rounded-xl bg-purple-950/40 border border-purple-800/50 text-brand-purple-light text-xs animate-pulse">
               <Loader2 className="h-4 w-4 animate-spin text-brand-purple-light" />
-              <span>Submitting proof to Botchain... Waiting for confirmation.</span>
+              <span>Submitting proof to BOT Chain... Waiting for confirmation.</span>
             </div>
           )}
 

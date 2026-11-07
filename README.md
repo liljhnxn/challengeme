@@ -2,7 +2,7 @@
 
 **Tagline:** *Set a challenge. Prove you did it.*
 
-ChallengeMe is a decentralized Web3 personal accountability platform deployed on **Botchain Mainnet** (and Botchain Testnet). Users connect MetaMask to set personal challenges, commit to firm deadlines, and publicly record immutable proof of completion directly on-chain.
+ChallengeMe is a decentralized Web3 personal accountability platform deployed natively on **BOT Chain**. Users connect MetaMask to set personal challenges, commit to firm deadlines, and publicly record immutable proof of completion directly on-chain.
 
 ---
 
@@ -18,27 +18,18 @@ ChallengeMe is a decentralized Web3 personal accountability platform deployed on
 
 ---
 
-## ⛓️ Blockchain Configuration
+## ⛓️ Blockchain Configuration (BOT Chain)
 
-### 🚀 Botchain Mainnet (Default)
 | Parameter | Value |
 | :--- | :--- |
-| **Network Name** | Botchain Mainnet |
+| **Network Name** | BOT Chain Mainnet |
 | **Chain ID** | `677` |
 | **RPC URL** | `https://rpc.botchain.ai` |
-| **Block Explorer** | [https://scan.botchain.ai](https://scan.botchain.ai) |
-| **Native Currency** | BOT (18 decimals) |
-| **Contract Address** | [`0xdA38Ac96800Cb359419285b82242f43594173590`](https://scan.botchain.ai/address/0xdA38Ac96800Cb359419285b82242f43594173590#code) (Verified) |
-
-### 🧪 Botchain Testnet
-| Parameter | Value |
-| :--- | :--- |
-| **Network Name** | Botchain Testnet |
-| **Chain ID** | `968` |
-| **RPC URL** | `https://rpc.bohr.life` |
-| **Block Explorer** | [https://scan.bohr.life](https://scan.bohr.life) |
-| **Native Currency** | BOHR (18 decimals) |
-| **Contract Address** | [`0x29c6F99EBCE7739B5571bF0a8B85afE06fA34498`](https://scan.bohr.life/address/0x29c6F99EBCE7739B5571bF0a8B85afE06fA34498#code) (Verified) |
+| **BOT Chain Explorer** | [https://scan.botchain.ai](https://scan.botchain.ai) |
+| **BOT Chain Website** | [https://botchain.ai](https://botchain.ai) |
+| **Native Token** | BOT (18 decimals) |
+| **Total Supply** | 150 Million BOT |
+| **Verified Contract** | [`0xdA38Ac96800Cb359419285b82242f43594173590`](https://scan.botchain.ai/address/0xdA38Ac96800Cb359419285b82242f43594173590#code) |
 
 ---
 
@@ -61,12 +52,12 @@ ChallengeMe/
 ├── test/
 │   └── ChallengeMe.test.ts        # Unit tests covering creation, completion, and queries
 ├── scripts/
-│   └── deploy.ts                  # Hardhat deployment script
+│   └── deploy.ts                  # Hardhat deployment script for BOT Chain
 ├── src/
 │   ├── app/
 │   │   ├── globals.css            # Tailwind theme & custom styling
 │   │   ├── layout.tsx             # Root layout with Web3 providers
-│   │   ├── page.tsx               # Main single-page application
+│   │   ├── page.tsx               # Main single-page application with BOT Chain ecosystem links
 │   │   └── providers.tsx          # Wagmi & TanStack Query client providers
 │   ├── components/
 │   │   ├── ChallengeCard.tsx      # Individual challenge card with countdowns
@@ -75,7 +66,7 @@ ChallengeMe/
 │   │   ├── Navbar.tsx             # Header, logo, network switcher, and wallet connect
 │   │   └── StatsOverview.tsx      # Metric cards (Total, Active, Completed, Your)
 │   ├── config/
-│   │   └── wagmi.ts               # Wagmi config & Botchain chain definition
+│   │   └── wagmi.ts               # Wagmi config & BOT Chain definition
 │   ├── contracts/
 │   │   └── ChallengeMeABI.ts      # TypeScript contract ABI & types
 │   └── lib/
@@ -106,7 +97,7 @@ npm run compile
 ```
 
 ### 4. Run Smart Contract Tests
-Run the comprehensive test suite (all 14 unit tests):
+Run the comprehensive test suite (all 14 unit tests pass):
 ```bash
 npm test
 ```
@@ -115,45 +106,20 @@ npm test
 
 ## 🚢 Deployment
 
-### Option A: Deploy to Botchain Testnet (Chain ID 968)
+### Deploy to BOT Chain
 
-1. Create a `.env.local` file (or copy `.env.example`):
-```bash
-cp .env.example .env.local
-```
-
-2. Add your deployer wallet's private key to `.env.local` (ensure it has testnet BOHR for gas):
+1. Configure `.env.local`:
 ```env
+NEXT_PUBLIC_CONTRACT_ADDRESS=0xdA38Ac96800Cb359419285b82242f43594173590
+NEXT_PUBLIC_RPC_URL=https://rpc.botchain.ai
+NEXT_PUBLIC_CHAIN_ID=677
 PRIVATE_KEY=your_private_key_here
-NEXT_PUBLIC_RPC_URL=https://rpc.bohr.life
-NEXT_PUBLIC_CHAIN_ID=968
 ```
 
-3. Run the deployment script:
+2. Run the deployment script:
 ```bash
 npm run deploy:botchain
 ```
-
-4. Copy the deployed contract address output by the script and set it in `.env.local`:
-```env
-NEXT_PUBLIC_CONTRACT_ADDRESS=0xYourDeployedContractAddress
-```
-
----
-
-### Option B: Deploy Locally (Hardhat Network)
-
-1. Start a local node in a separate terminal:
-```bash
-npx hardhat node
-```
-
-2. Deploy the contract to localhost:
-```bash
-npm run deploy:local
-```
-
-3. Set `NEXT_PUBLIC_CONTRACT_ADDRESS` in `.env.local` to the address logged in the terminal.
 
 ---
 
@@ -174,20 +140,28 @@ npm run start
 
 ---
 
-## 🦊 Adding Botchain Testnet to MetaMask
+## 🦊 Adding BOT Chain to MetaMask
 
 If MetaMask does not switch automatically:
-* **Network Name:** Botchain Testnet
-* **New RPC URL:** `https://rpc.bohr.life`
-* **Chain ID:** `968`
-* **Currency Symbol:** `BOHR`
-* **Block Explorer URL:** `https://scan.bohr.life`
+* **Network Name:** BOT Chain
+* **New RPC URL:** `https://rpc.botchain.ai`
+* **Chain ID:** `677`
+* **Currency Symbol:** `BOT`
+* **Block Explorer URL:** `https://scan.botchain.ai`
+
+---
+
+## 🔗 Official Ecosystem Links
+
+* **BOT Chain Website:** [https://botchain.ai](https://botchain.ai)
+* **BOT Chain Explorer:** [https://scan.botchain.ai](https://scan.botchain.ai)
+* **Verified Contract:** [https://scan.botchain.ai/address/0xdA38Ac96800Cb359419285b82242f43594173590#code](https://scan.botchain.ai/address/0xdA38Ac96800Cb359419285b82242f43594173590#code)
 
 ---
 
 ## 🔒 Security & Privacy Notes
 
-* **Public Ledger:** All titles, descriptions, and completion proofs are publicly viewable on the blockchain. Users are advised not to publish sensitive, private, or confidential personal information.
+* **Public Ledger:** All titles, descriptions, and completion proofs are publicly viewable on BOT Chain. Users are advised not to publish sensitive, private, or confidential personal information.
 * **Strict Constraints:**
   * Title: 1 to 60 characters
   * Description: 1 to 200 characters
@@ -199,4 +173,3 @@ If MetaMask does not switch automatically:
 
 ## 📄 License
 MIT License.
-

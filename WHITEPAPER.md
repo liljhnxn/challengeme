@@ -2,18 +2,19 @@
 
 **Platform:** ChallengeMe  
 **Tagline:** *Set a challenge. Prove you did it.*  
-**Network:** Botchain Mainnet (Chain ID: 677) & Testnet (Chain ID: 968)  
-**Mainnet Contract Address:** [`0xdA38Ac96800Cb359419285b82242f43594173590`](https://scan.botchain.ai/address/0xdA38Ac96800Cb359419285b82242f43594173590#code) (Verified)  
-**Testnet Contract Address:** [`0x29c6F99EBCE7739B5571bF0a8B85afE06fA34498`](https://scan.bohr.life/address/0x29c6F99EBCE7739B5571bF0a8B85afE06fA34498#code) (Verified)  
+**Network:** BOT Chain Mainnet (Chain ID: 677)  
+**Contract Address:** [`0xdA38Ac96800Cb359419285b82242f43594173590`](https://scan.botchain.ai/address/0xdA38Ac96800Cb359419285b82242f43594173590#code) (Verified)  
+**BOT Chain Website:** [https://botchain.ai](https://botchain.ai)  
+**BOT Chain Explorer:** [https://scan.botchain.ai](https://scan.botchain.ai)  
 **Repository:** [https://github.com/liljhnxn/challengeme](https://github.com/liljhnxn/challengeme)  
 **Date:** November 2026  
-**Document Version:** 1.1  
+**Document Version:** 2.0  
 
 ---
 
 ## Executive Summary
 
-**ChallengeMe** is a decentralized personal accountability protocol built on **Botchain**. It bridges human intention and digital execution by transforming personal goals, habits, and fitness milestones into immutable, on-chain commitments.
+**ChallengeMe** is a decentralized personal accountability protocol built natively on **BOT Chain**. It bridges human intention and digital execution by transforming personal goals, habits, and milestones into immutable, on-chain commitments.
 
 In traditional Web2 personal productivity apps, commitments are private, easily deleted, and held in centralized databases prone to data harvesting. ChallengeMe introduces public, cryptographic accountability: users connect MetaMask, set a challenge with a rigid deadline, and publicly record permanent proof upon completion.
 
@@ -31,7 +32,7 @@ In traditional Web2 personal productivity apps, commitments are private, easily 
 
 ChallengeMe strips away unnecessary friction to deliver a **lean, trust-minimized Web3 accountability platform**:
 
-* **Immutable On-Chain Records:** Every challenge creation and completion is anchored on the Botchain ledger.
+* **Immutable On-Chain Records:** Every challenge creation and completion is anchored on the BOT Chain ledger.
 * **Firm Deadlines with Dynamic Countdowns:** Challenges display live ticking clocks; expired challenges are permanently distinguished from active ones.
 * **Cryptographic Proof of Completion:** Creators link verifiable evidence (GitHub PRs, Strava activities, tweets, portfolio links) directly to their smart contract record.
 * **Sovereign & Non-Custodial:** No email, password, or third-party login. MetaMask wallet address is your permanent identity.
@@ -42,7 +43,7 @@ ChallengeMe strips away unnecessary friction to deliver a **lean, trust-minimize
 ## 3. System Architecture & Smart Contract Design
 
 ### 3.1 Smart Contract (`ChallengeMe.sol`)
-Deployed and verified on Botchain Testnet at `0x29c6F99EBCE7739B5571bF0a8B85afE06fA34498`.
+Deployed and verified on BOT Chain Mainnet at `0xdA38Ac96800Cb359419285b82242f43594173590`.
 
 ```solidity
 struct Challenge {
@@ -76,7 +77,7 @@ struct Challenge {
 ### Slide 1: Title & Vision
 * **Header:** ChallengeMe
 * **Tagline:** Set a challenge. Prove you did it.
-* **Subtext:** The on-chain accountability protocol powered by Botchain.
+* **Subtext:** The on-chain accountability protocol powered by BOT Chain.
 * **Visual:** Minimal dark theme logo, shielded checkmark emblem.
 
 ### Slide 2: The Problem
@@ -90,7 +91,7 @@ struct Challenge {
 * Permanent proof of work anchored to your Web3 wallet forever.
 
 ### Slide 4: How It Works (User Flow)
-1. **Connect:** Connect MetaMask to Botchain Testnet.
+1. **Connect:** Connect MetaMask to BOT Chain (Chain ID: 677).
 2. **Commit:** Set title, description, and target deadline.
 3. **Execute:** Live countdown ticks down publicly.
 4. **Prove:** Submit verifiable proof (URL or proof text) and mark completed on-chain.
@@ -106,25 +107,25 @@ struct Challenge {
 * Rapidly growing Web3 consumer application sector seeking real utility beyond DeFi speculation.
 * Natural synergy with developer hackathons, fitness streaks, and DAO contributor tasks.
 
-### Slide 7: Technical Highlights & Botchain Synergies
-* Deployed on Botchain Testnet (Chain ID 968).
-* Low gas consumption and fast finality on Botchain RPC.
+### Slide 7: Technical Highlights & BOT Chain Synergies
+* Deployed on BOT Chain Mainnet (Chain ID 677).
+* Low gas consumption and fast finality on BOT Chain RPC.
 * Full test coverage (14 passing unit tests via Hardhat).
-* Verified contract code accessible publicly on BohrScan Explorer.
+* Verified contract code accessible publicly on BOT Chain Explorer.
 
 ### Slide 8: Roadmap & Milestones
-* **Phase 1 (Completed):** Core smart contract deployment, BohrScan verification, responsive Next.js dApp, and testnet launch.
+* **Phase 1 (Completed):** Core smart contract deployment, BOT Chain Mainnet verification, responsive Next.js dApp, and mainnet launch.
 * **Phase 2:** Peer verification (community voting/attestation on proof validity).
-* **Phase 3:** Optional stake-to-commit mechanics (pledge BOHR tokens returned upon proof verification).
-* **Phase 4:** Mainnet deployment, DAO bounties, and mobile PWA release.
+* **Phase 3:** Optional stake-to-commit mechanics (pledge BOT tokens returned upon proof verification).
+* **Phase 4:** DAO bounties and mobile PWA release.
 
 ### Slide 9: Co-Marketing & Growth Strategy
-* Botchain ecosystem directory placement.
-* Community challenge sprints (e.g. "Build on Botchain 14-Day Challenge").
+* BOT Chain ecosystem directory placement.
+* Community challenge sprints (e.g. "Build on BOT Chain 14-Day Challenge").
 * Joint AMAs and social spotlights on X and Telegram.
 
 ### Slide 10: The Ask & Call to Action
 * **Try the dApp:** Connect and set your first on-chain challenge.
-* **Explorer Verification:** [BohrScan Verified Code](https://scan.bohr.life/address/0x29c6F99EBCE7739B5571bF0a8B85afE06fA34498#code)
+* **Explorer Verification:** [BOT Chain Explorer Verified Code](https://scan.botchain.ai/address/0xdA38Ac96800Cb359419285b82242f43594173590#code)
+* **BOT Chain Website:** [https://botchain.ai](https://botchain.ai)
 * **GitHub Repository:** [https://github.com/liljhnxn/challengeme](https://github.com/liljhnxn/challengeme)
-

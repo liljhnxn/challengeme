@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useAccount, useConnect, useDisconnect, useSwitchChain } from "wagmi";
 import { shortenAddress } from "@/lib/utils";
-import { botchainMainnet, targetChainId, EXPLORER_URL } from "@/config/wagmi";
+import { targetChainId, EXPLORER_URL } from "@/config/wagmi";
 import {
   ShieldCheck,
   Wallet,
@@ -21,7 +21,6 @@ export function Navbar({ onOpenCreateModal }: { onOpenCreateModal?: () => void }
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const isWrongNetwork = isConnected && chain && chain.id !== targetChainId && chain.id !== 31337;
-  const isMainnet = targetChainId === 677;
 
   const handleConnect = () => {
     const metaMaskConnector =
@@ -47,12 +46,8 @@ export function Navbar({ onOpenCreateModal }: { onOpenCreateModal?: () => void }
                 <span className="text-xl font-bold tracking-tight text-white">
                   Challenge<span className="text-brand-purple-light">Me</span>
                 </span>
-                <span className={`hidden sm:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium border ${
-                  isMainnet
-                    ? "bg-emerald-950/60 text-brand-green-light border-brand-green-border/50"
-                    : "bg-brand-purple-muted/60 text-brand-purple-light border-brand-purple-border/50"
-                }`}>
-                  {isMainnet ? "Botchain Mainnet" : "Botchain Testnet"}
+                <span className="hidden sm:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium border bg-emerald-950/60 text-brand-green-light border-brand-green-border/50">
+                  BOT Chain (677)
                 </span>
               </div>
               <p className="text-xs text-zinc-400 font-normal hidden sm:block">
@@ -78,10 +73,10 @@ export function Navbar({ onOpenCreateModal }: { onOpenCreateModal?: () => void }
               <button
                 onClick={() => switchChain({ chainId: targetChainId })}
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-amber-950/60 text-amber-300 border border-amber-600/50 hover:bg-amber-900/60 transition"
-                title={`Click to switch to ${isMainnet ? "Botchain Mainnet (677)" : "Botchain Testnet (968)"}`}
+                title="Click to switch to BOT Chain (677)"
               >
                 <AlertTriangle className="h-3.5 w-3.5 text-amber-400" />
-                <span className="hidden xs:inline">Switch to {isMainnet ? "Mainnet" : "Testnet"}</span>
+                <span className="hidden xs:inline">Switch to BOT Chain</span>
               </button>
             )}
 
@@ -117,7 +112,7 @@ export function Navbar({ onOpenCreateModal }: { onOpenCreateModal?: () => void }
                       <div className="mt-1 flex items-center justify-between text-[11px] text-zinc-400">
                         <span>Network:</span>
                         <span className="text-brand-purple-light font-medium">
-                          {chain?.name || (isMainnet ? "Botchain (677)" : "Botchain (968)")}
+                          {chain?.name || "BOT Chain (677)"}
                         </span>
                       </div>
                     </div>
@@ -129,7 +124,7 @@ export function Navbar({ onOpenCreateModal }: { onOpenCreateModal?: () => void }
                       className="flex items-center gap-2 px-3 py-2 hover:bg-charcoal-800 text-zinc-300 hover:text-white transition"
                     >
                       <ExternalLink className="h-3.5 w-3.5" />
-                      <span>View on {isMainnet ? "BotchainScan" : "BohrScan"}</span>
+                      <span>View on BOT Chain Explorer</span>
                     </a>
 
                     <button

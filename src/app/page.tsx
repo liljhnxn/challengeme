@@ -7,7 +7,7 @@ import { StatsOverview } from "@/components/StatsOverview";
 import { CreateChallengeForm } from "@/components/CreateChallengeForm";
 import { ChallengeCard } from "@/components/ChallengeCard";
 import { CHALLENGE_ME_ABI, ChallengeItem } from "@/contracts/ChallengeMeABI";
-import { CONTRACT_ADDRESS, targetChainId, EXPLORER_URL } from "@/config/wagmi";
+import { CONTRACT_ADDRESS, EXPLORER_URL, BOTCHAIN_WEBSITE, targetChainId } from "@/config/wagmi";
 import {
   Sparkles,
   Filter,
@@ -16,15 +16,17 @@ import {
   RefreshCw,
   Search,
   AlertCircle,
-  HelpCircle,
   ExternalLink,
+  Globe,
+  Layers,
+  ShieldCheck,
 } from "lucide-react";
 
 type FilterType = "all" | "active" | "completed" | "expired";
 type TabType = "community" | "mine";
 
 export default function HomePage() {
-  const { address, isConnected, chain } = useAccount();
+  const { address, isConnected } = useAccount();
 
   // Dynamic live clock for accurate countdowns and expiration calculation
   const [currentTimeSec, setCurrentTimeSec] = useState<number>(() =>
@@ -49,7 +51,6 @@ export default function HomePage() {
     isLoading: isLoadingChallenges,
     isRefetching,
     refetch: refetchChallenges,
-    error: contractError,
   } = useReadContract({
     address: CONTRACT_ADDRESS,
     abi: CHALLENGE_ME_ABI,
@@ -109,24 +110,22 @@ export default function HomePage() {
         <div className="relative mb-8 text-center sm:text-left sm:flex sm:items-center sm:justify-between">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-charcoal-850 border border-brand-purple-border/40 text-xs font-medium text-brand-purple-light mb-3">
-              <span className="h-1.5 w-1.5 rounded-full bg-brand-purple" />
-              <span>Web3 Accountability Protocol</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-brand-green" />
+              <span>BOT Chain Mainnet Ecosystem</span>
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
               Set a challenge. <br className="sm:hidden" />
               <span className="gradient-purple-text">Prove you did it.</span>
             </h1>
             <p className="mt-2 text-sm sm:text-base text-zinc-400 max-w-2xl">
-              Lock in your personal targets on the Botchain blockchain. Meet your deadlines, submit proof of completion, and immortalize your achievement.
+              Lock in your personal targets on BOT Chain. Meet your deadlines, submit proof of completion, and immortalize your achievements on-chain.
             </p>
           </div>
 
           <div className="mt-6 sm:mt-0 flex flex-col sm:items-end gap-2 text-xs font-mono text-zinc-400">
             <div className="flex items-center gap-1.5">
               <span className="text-zinc-500">Network:</span>
-              <span className="text-zinc-200">
-                {targetChainId === 677 ? "Botchain Mainnet (677)" : "Botchain Testnet (968)"}
-              </span>
+              <span className="text-emerald-400 font-semibold">BOT Chain (677)</span>
             </div>
             <div className="flex items-center gap-1.5">
               <span className="text-zinc-500">Contract:</span>
@@ -141,9 +140,18 @@ export default function HomePage() {
                   <ExternalLink className="h-3 w-3" />
                 </a>
               ) : (
-                <span className="text-amber-400">Ready for deployment</span>
+                <span className="text-amber-400">Configured on BOT Chain</span>
               )}
             </div>
+            <a
+              href={`${EXPLORER_URL}/address/${CONTRACT_ADDRESS}#code`}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-charcoal-850 hover:bg-charcoal-800 border border-charcoal-700 text-[11px] text-zinc-300 hover:text-white transition"
+            >
+              <span>View Verified Contract on BOT Chain Explorer</span>
+              <ExternalLink className="h-3 w-3 text-emerald-400" />
+            </a>
           </div>
         </div>
 
@@ -275,19 +283,15 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Contract not deployed notice */}
+            {/* Contract status warning if not set */}
             {!isContractConfigured && (
               <div className="p-5 rounded-2xl bg-amber-950/20 border border-amber-800/40 text-amber-200 text-xs">
                 <div className="flex items-center gap-2 font-semibold text-sm text-amber-300 mb-1">
                   <AlertCircle className="h-4 w-4 shrink-0" />
-                  <span>Contract Deployment Pending</span>
+                  <span>Contract Deployment Notice</span>
                 </div>
                 <p className="text-amber-200/80 leading-relaxed">
-                  The smart contract address is not yet configured in{" "}
-                  <code className="bg-black/30 px-1 py-0.5 rounded font-mono">
-                    .env.local
-                  </code>
-                  . Run the Hardhat deploy script to deploy ChallengeMe to Botchain Testnet or localhost, then refresh this page.
+                  The smart contract address is not configured. Please verify your environment settings.
                 </p>
               </div>
             )}
@@ -299,7 +303,7 @@ export default function HomePage() {
                   <RefreshCw className="h-6 w-6 text-brand-purple-light animate-spin mx-auto" />
                 </div>
                 <p className="text-sm font-medium text-zinc-300">
-                  Loading challenges from Botchain...
+                  Loading challenges from BOT Chain...
                 </p>
                 <p className="text-xs text-zinc-400 mt-1">
                   Querying immutable ledger state
@@ -344,7 +348,7 @@ export default function HomePage() {
                       ? "Try searching for a different keyword or reset your filter."
                       : activeTab === "mine"
                       ? "Set your first challenge using the form on the left!"
-                      : "Be the pioneer: submit the first verifiable challenge to the Botchain testnet."}
+                      : "Be the pioneer: submit the first verifiable challenge to BOT Chain."}
                   </p>
                 </div>
               )}
@@ -365,37 +369,115 @@ export default function HomePage() {
             )}
           </div>
         </div>
+
+        {/* BOT Chain Ecosystem Feature Banner */}
+        <section className="mt-16 rounded-2xl border border-charcoal-700/80 bg-gradient-to-br from-charcoal-900 via-charcoal-850 to-charcoal-900 p-6 sm:p-8 shadow-lg">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="flex items-center gap-4 text-center md:text-left">
+              <div className="h-14 w-14 rounded-2xl bg-gradient-to-tr from-purple-600 to-emerald-400 p-0.5 shrink-0 shadow-md">
+                <div className="h-full w-full rounded-2xl bg-charcoal-950 flex items-center justify-center text-white font-bold text-lg">
+                  BOT
+                </div>
+              </div>
+              <div>
+                <div className="flex items-center justify-center md:justify-start gap-2">
+                  <h3 className="text-lg font-bold text-white tracking-tight">
+                    Powered by BOT Chain
+                  </h3>
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-950/80 text-emerald-300 border border-emerald-600/50">
+                    Mainnet 677
+                  </span>
+                </div>
+                <p className="mt-1 text-xs sm:text-sm text-zinc-400 max-w-xl">
+                  ChallengeMe leverages BOT Chain’s high-throughput, low-latency consensus to record immutable personal goals and cryptographic completion proofs.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <a
+                href={BOTCHAIN_WEBSITE}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold text-white bg-charcoal-800 hover:bg-charcoal-700 border border-charcoal-600/80 transition shadow-sm"
+              >
+                <Globe className="h-3.5 w-3.5 text-brand-purple-light" />
+                <span>BOT Chain Website</span>
+                <ExternalLink className="h-3 w-3 text-zinc-400" />
+              </a>
+
+              <a
+                href={EXPLORER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold text-white bg-gradient-to-r from-emerald-600 to-brand-green hover:from-emerald-500 hover:to-brand-green-light transition shadow-md shadow-emerald-950/40"
+              >
+                <Layers className="h-3.5 w-3.5" />
+                <span>BOT Chain Explorer</span>
+                <ExternalLink className="h-3 w-3 text-white" />
+              </a>
+            </div>
+          </div>
+        </section>
       </main>
 
       {/* Footer */}
-      <footer className="mt-16 border-t border-charcoal-800 bg-charcoal-950 py-6 text-xs text-zinc-400">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div className="flex items-center gap-2">
-            <span className="font-semibold text-zinc-300">ChallengeMe</span>
-            <span>—</span>
-            <span>Set a challenge. Prove you did it.</span>
+      <footer className="mt-12 border-t border-charcoal-800 bg-charcoal-950 py-8 text-xs text-zinc-400">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 pb-6 border-b border-charcoal-850">
+            <div className="flex items-center gap-3">
+              <div className="h-7 w-7 rounded-lg bg-gradient-to-tr from-brand-purple to-brand-green flex items-center justify-center text-white font-bold text-xs">
+                CM
+              </div>
+              <div>
+                <span className="font-semibold text-white">ChallengeMe</span>
+                <span className="mx-2 text-zinc-600">•</span>
+                <span className="text-zinc-400">Set a challenge. Prove you did it.</span>
+              </div>
+            </div>
+
+            {/* Required Ecosystem Links */}
+            <div className="flex flex-wrap items-center gap-6 text-xs">
+              <a
+                href={BOTCHAIN_WEBSITE}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition flex items-center gap-1.5"
+              >
+                <span>BOT Chain Website:</span>
+                <span className="text-emerald-400 underline">https://botchain.ai</span>
+              </a>
+
+              <a
+                href={EXPLORER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition flex items-center gap-1.5"
+              >
+                <span>BOT Chain Explorer:</span>
+                <span className="text-emerald-400 underline">https://scan.botchain.ai</span>
+              </a>
+            </div>
           </div>
-          <div className="flex items-center gap-4 text-zinc-400">
-            <a
-              href={EXPLORER_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="hover:text-brand-purple-light transition"
-            >
-              {targetChainId === 677 ? "BotchainScan Explorer" : "BohrScan Explorer"}
-            </a>
-            <a
-              href={targetChainId === 677 ? "https://rpc.botchain.ai" : "https://rpc.bohr.life"}
-              target="_blank"
-              rel="noreferrer"
-              className="hover:text-brand-purple-light transition"
-            >
-              RPC Endpoint
-            </a>
+
+          <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-zinc-500">
+            <div>
+              Contract Address:{" "}
+              <a
+                href={`${EXPLORER_URL}/address/${CONTRACT_ADDRESS}`}
+                target="_blank"
+                rel="noreferrer"
+                className="font-mono text-zinc-400 hover:text-emerald-400 underline"
+              >
+                {CONTRACT_ADDRESS}
+              </a>
+            </div>
+            <div>
+              © 2026 ChallengeMe. Running natively on BOT Chain (Chain ID: 677).
+            </div>
           </div>
         </div>
       </footer>
     </div>
   );
 }
-

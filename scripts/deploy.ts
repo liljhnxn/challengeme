@@ -8,7 +8,7 @@ async function main() {
   const [deployer] = await ethers.getSigners();
   const network = await ethers.provider.getNetwork();
   const chainId = Number(network.chainId);
-  const tokenSymbol = chainId === 677 ? "BOT" : chainId === 968 ? "BOHR" : "ETH";
+  const tokenSymbol = chainId === 677 ? "BOT" : "ETH";
 
   console.log("====================================================");
   console.log(`Deploying ChallengeMe to: ${network.name} (Chain ID: ${chainId})`);

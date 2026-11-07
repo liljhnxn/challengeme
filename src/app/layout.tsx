@@ -5,7 +5,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "ChallengeMe | Set a challenge. Prove you did it.",
   description:
-    "Decentralized challenge platform where users create personal challenges, set deadlines, and publicly record their completion on Botchain.",
+    "Decentralized challenge platform where users create personal challenges, set deadlines, and publicly record their completion on BOT Chain.",
   icons: {
     icon: [
       { url: "/favicon.svg?v=2", type: "image/svg+xml" },

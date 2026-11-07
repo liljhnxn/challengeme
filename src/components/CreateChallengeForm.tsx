@@ -128,7 +128,7 @@ export function CreateChallengeForm({ onSuccess }: CreateChallengeFormProps) {
             Create a New Challenge
           </h2>
           <p className="text-xs text-zinc-400">
-            Commit to a goal on Botchain. Store it immutably until you prove it.
+            Commit to a goal on BOT Chain. Store it immutably until you prove it.
           </p>
         </div>
       </div>
@@ -258,7 +258,7 @@ export function CreateChallengeForm({ onSuccess }: CreateChallengeFormProps) {
         {isConfirming && (
           <div className="flex items-center gap-2 p-3 rounded-xl bg-purple-950/40 border border-purple-800/50 text-brand-purple-light text-xs animate-pulse">
             <Loader2 className="h-4 w-4 animate-spin text-brand-purple-light" />
-            <span>Broadcasting challenge to Botchain... Waiting for confirmation.</span>
+            <span>Broadcasting challenge to BOT Chain... Waiting for confirmation.</span>
           </div>
         )}
 
@@ -301,7 +301,7 @@ export function CreateChallengeForm({ onSuccess }: CreateChallengeFormProps) {
         </button>
 
         <p className="text-[11px] text-zinc-400 text-center">
-          Challenges and proof records are publicly visible on the Botchain network. Avoid submitting sensitive information.
+          Challenges and proof records are publicly visible on BOT Chain. Avoid submitting sensitive information.
         </p>
       </form>
     </div>
