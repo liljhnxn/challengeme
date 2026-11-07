@@ -149,8 +149,9 @@ export function ChallengeCard({
                   href={`${EXPLORER_URL}/address/${challenge.creator}`}
                   target="_blank"
                   rel="noreferrer"
-                  className="font-mono text-zinc-300 hover:text-brand-purple-light transition inline-flex items-center gap-1"
+                  className="font-mono text-zinc-300 hover:text-brand-purple-light transition inline-flex items-center gap-1.5"
                 >
+                  <img src="/botchain-logo.png" alt="BOT Chain" className="h-3 w-3 rounded-sm object-contain" />
                   <span>{shortenAddress(challenge.creator)}</span>
                   <ExternalLink className="h-2.5 w-2.5 opacity-60" />
                 </a>

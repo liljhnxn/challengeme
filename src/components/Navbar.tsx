@@ -46,8 +46,9 @@ export function Navbar({ onOpenCreateModal }: { onOpenCreateModal?: () => void }
                 <span className="text-xl font-bold tracking-tight text-white">
                   Challenge<span className="text-brand-purple-light">Me</span>
                 </span>
-                <span className="hidden sm:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium border bg-emerald-950/60 text-brand-green-light border-brand-green-border/50">
-                  BOT Chain (677)
+                <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-medium border bg-emerald-950/60 text-brand-green-light border-brand-green-border/50">
+                  <img src="/botchain-logo.png" alt="BOT Chain" className="h-3 w-3 rounded-sm object-contain" />
+                  <span>BOT Chain (677)</span>
                 </span>
               </div>
               <p className="text-xs text-zinc-400 font-normal hidden sm:block">
@@ -123,8 +124,9 @@ export function Navbar({ onOpenCreateModal }: { onOpenCreateModal?: () => void }
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 px-3 py-2 hover:bg-charcoal-800 text-zinc-300 hover:text-white transition"
                     >
-                      <ExternalLink className="h-3.5 w-3.5" />
+                      <img src="/botchain-logo.png" alt="BOT Chain" className="h-4 w-4 rounded-sm object-contain shrink-0" />
                       <span>View on BOT Chain Explorer</span>
+                      <ExternalLink className="h-3 w-3 ml-auto opacity-70" />
                     </a>
 
                     <button

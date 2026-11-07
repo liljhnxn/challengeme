@@ -7,7 +7,7 @@ import { StatsOverview } from "@/components/StatsOverview";
 import { CreateChallengeForm } from "@/components/CreateChallengeForm";
 import { ChallengeCard } from "@/components/ChallengeCard";
 import { CHALLENGE_ME_ABI, ChallengeItem } from "@/contracts/ChallengeMeABI";
-import { CONTRACT_ADDRESS, EXPLORER_URL, BOTCHAIN_WEBSITE, targetChainId } from "@/config/wagmi";
+import { CONTRACT_ADDRESS, EXPLORER_URL, BOTCHAIN_WEBSITE } from "@/config/wagmi";
 import {
   Sparkles,
   Filter,
@@ -15,11 +15,9 @@ import {
   User,
   RefreshCw,
   Search,
-  AlertCircle,
   ExternalLink,
   Globe,
   Layers,
-  ShieldCheck,
 } from "lucide-react";
 
 type FilterType = "all" | "active" | "completed" | "expired";
@@ -97,10 +95,6 @@ export default function HomePage() {
     });
   }, [challenges, activeTab, activeFilter, searchQuery, address, currentTimeSec]);
 
-  const isContractConfigured =
-    Boolean(CONTRACT_ADDRESS) &&
-    CONTRACT_ADDRESS !== "0x0000000000000000000000000000000000000000";
-
   return (
     <div className="min-h-screen flex flex-col bg-charcoal-950">
       <Navbar />
@@ -110,7 +104,7 @@ export default function HomePage() {
         <div className="relative mb-8 text-center sm:text-left sm:flex sm:items-center sm:justify-between">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-charcoal-850 border border-brand-purple-border/40 text-xs font-medium text-brand-purple-light mb-3">
-              <span className="h-1.5 w-1.5 rounded-full bg-brand-green" />
+              <img src="/botchain-logo.png" alt="BOT Chain" className="h-3.5 w-3.5 rounded-sm object-contain" />
               <span>BOT Chain Mainnet Ecosystem</span>
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
@@ -125,33 +119,49 @@ export default function HomePage() {
           <div className="mt-6 sm:mt-0 flex flex-col sm:items-end gap-2 text-xs font-mono text-zinc-400">
             <div className="flex items-center gap-1.5">
               <span className="text-zinc-500">Network:</span>
-              <span className="text-emerald-400 font-semibold">BOT Chain (677)</span>
+              <span className="inline-flex items-center gap-1.5 text-emerald-400 font-semibold">
+                <img src="/botchain-logo.png" alt="BOT Chain" className="h-3.5 w-3.5 rounded-sm object-contain" />
+                <span>BOT Chain (Chain ID: 677)</span>
+              </span>
             </div>
+
             <div className="flex items-center gap-1.5">
-              <span className="text-zinc-500">Contract:</span>
-              {isContractConfigured ? (
-                <a
-                  href={`${EXPLORER_URL}/address/${CONTRACT_ADDRESS}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-brand-purple-light underline hover:text-white inline-flex items-center gap-1"
-                >
-                  <span>{CONTRACT_ADDRESS.slice(0, 6)}...{CONTRACT_ADDRESS.slice(-4)}</span>
-                  <ExternalLink className="h-3 w-3" />
-                </a>
-              ) : (
-                <span className="text-amber-400">Configured on BOT Chain</span>
-              )}
+              <span className="text-zinc-500">Mainnet Contract:</span>
+              <a
+                href={`${EXPLORER_URL}/address/${CONTRACT_ADDRESS}`}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1 text-brand-purple-light underline hover:text-white"
+              >
+                <img src="/botchain-logo.png" alt="BOT Chain" className="h-3 w-3 rounded-sm object-contain" />
+                <span>{CONTRACT_ADDRESS.slice(0, 6)}...{CONTRACT_ADDRESS.slice(-4)}</span>
+                <ExternalLink className="h-3 w-3" />
+              </a>
             </div>
-            <a
-              href={`${EXPLORER_URL}/address/${CONTRACT_ADDRESS}#code`}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-charcoal-850 hover:bg-charcoal-800 border border-charcoal-700 text-[11px] text-zinc-300 hover:text-white transition"
-            >
-              <span>View Verified Contract on BOT Chain Explorer</span>
-              <ExternalLink className="h-3 w-3 text-emerald-400" />
-            </a>
+
+            <div className="flex flex-wrap items-center gap-2 mt-1">
+              <a
+                href={BOTCHAIN_WEBSITE}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-charcoal-850 hover:bg-charcoal-800 border border-charcoal-700 text-[11px] text-zinc-300 hover:text-white transition"
+              >
+                <img src="/botchain-logo.png" alt="BOT Chain" className="h-3 w-3 rounded-sm object-contain" />
+                <span>botchain.ai</span>
+                <ExternalLink className="h-2.5 w-2.5 opacity-60" />
+              </a>
+
+              <a
+                href={`${EXPLORER_URL}/address/${CONTRACT_ADDRESS}#code`}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-950/60 hover:bg-emerald-900/60 border border-emerald-600/50 text-[11px] text-emerald-300 hover:text-white transition"
+              >
+                <img src="/botchain-logo.png" alt="BOT Chain" className="h-3 w-3 rounded-sm object-contain" />
+                <span>Verified Contract on Explorer</span>
+                <ExternalLink className="h-2.5 w-2.5 opacity-70" />
+              </a>
+            </div>
           </div>
         </div>
 
@@ -283,19 +293,6 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Contract status warning if not set */}
-            {!isContractConfigured && (
-              <div className="p-5 rounded-2xl bg-amber-950/20 border border-amber-800/40 text-amber-200 text-xs">
-                <div className="flex items-center gap-2 font-semibold text-sm text-amber-300 mb-1">
-                  <AlertCircle className="h-4 w-4 shrink-0" />
-                  <span>Contract Deployment Notice</span>
-                </div>
-                <p className="text-amber-200/80 leading-relaxed">
-                  The smart contract address is not configured. Please verify your environment settings.
-                </p>
-              </div>
-            )}
-
             {/* Loading state */}
             {isLoadingChallenges && (
               <div className="py-16 text-center">
@@ -374,22 +371,22 @@ export default function HomePage() {
         <section className="mt-16 rounded-2xl border border-charcoal-700/80 bg-gradient-to-br from-charcoal-900 via-charcoal-850 to-charcoal-900 p-6 sm:p-8 shadow-lg">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-4 text-center md:text-left">
-              <div className="h-14 w-14 rounded-2xl bg-gradient-to-tr from-purple-600 to-emerald-400 p-0.5 shrink-0 shadow-md">
-                <div className="h-full w-full rounded-2xl bg-charcoal-950 flex items-center justify-center text-white font-bold text-lg">
-                  BOT
-                </div>
-              </div>
+              <img
+                src="/botchain-logo.png"
+                alt="BOT Chain"
+                className="h-16 w-16 rounded-2xl object-cover bg-black p-1 border border-emerald-500/40 shadow-lg shrink-0"
+              />
               <div>
                 <div className="flex items-center justify-center md:justify-start gap-2">
                   <h3 className="text-lg font-bold text-white tracking-tight">
                     Powered by BOT Chain
                   </h3>
                   <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-950/80 text-emerald-300 border border-emerald-600/50">
-                    Mainnet 677
+                    Chain ID: 677
                   </span>
                 </div>
                 <p className="mt-1 text-xs sm:text-sm text-zinc-400 max-w-xl">
-                  ChallengeMe leverages BOT Chain’s high-throughput, low-latency consensus to record immutable personal goals and cryptographic completion proofs.
+                  ChallengeMe leverages BOT Chain’s high-throughput consensus to record immutable personal goals and cryptographic completion proofs.
                 </p>
               </div>
             </div>
@@ -399,9 +396,9 @@ export default function HomePage() {
                 href={BOTCHAIN_WEBSITE}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold text-white bg-charcoal-800 hover:bg-charcoal-700 border border-charcoal-600/80 transition shadow-sm"
+                className="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-xs font-semibold text-white bg-charcoal-800 hover:bg-charcoal-700 border border-charcoal-600/80 transition shadow-sm"
               >
-                <Globe className="h-3.5 w-3.5 text-brand-purple-light" />
+                <img src="/botchain-logo.png" alt="BOT Chain" className="h-4 w-4 rounded-sm object-contain shrink-0" />
                 <span>BOT Chain Website</span>
                 <ExternalLink className="h-3 w-3 text-zinc-400" />
               </a>
@@ -410,9 +407,9 @@ export default function HomePage() {
                 href={EXPLORER_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold text-white bg-gradient-to-r from-emerald-600 to-brand-green hover:from-emerald-500 hover:to-brand-green-light transition shadow-md shadow-emerald-950/40"
+                className="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-xs font-semibold text-white bg-gradient-to-r from-emerald-600 to-brand-green hover:from-emerald-500 hover:to-brand-green-light transition shadow-md shadow-emerald-950/40"
               >
-                <Layers className="h-3.5 w-3.5" />
+                <img src="/botchain-logo.png" alt="BOT Chain" className="h-4 w-4 rounded-sm object-contain shrink-0" />
                 <span>BOT Chain Explorer</span>
                 <ExternalLink className="h-3 w-3 text-white" />
               </a>
@@ -426,9 +423,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 pb-6 border-b border-charcoal-850">
             <div className="flex items-center gap-3">
-              <div className="h-7 w-7 rounded-lg bg-gradient-to-tr from-brand-purple to-brand-green flex items-center justify-center text-white font-bold text-xs">
-                CM
-              </div>
+              <img src="/botchain-logo.png" alt="BOT Chain" className="h-8 w-8 rounded-lg object-contain bg-black p-0.5 border border-emerald-500/30" />
               <div>
                 <span className="font-semibold text-white">ChallengeMe</span>
                 <span className="mx-2 text-zinc-600">•</span>
@@ -436,14 +431,15 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Required Ecosystem Links */}
+            {/* Required Ecosystem Links with Logo at Front */}
             <div className="flex flex-wrap items-center gap-6 text-xs">
               <a
                 href={BOTCHAIN_WEBSITE}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-white transition flex items-center gap-1.5"
+                className="hover:text-white transition inline-flex items-center gap-2 group"
               >
+                <img src="/botchain-logo.png" alt="BOT Chain" className="h-4 w-4 rounded-sm object-contain shrink-0 group-hover:scale-105 transition" />
                 <span>BOT Chain Website:</span>
                 <span className="text-emerald-400 underline">https://botchain.ai</span>
               </a>
@@ -452,8 +448,9 @@ export default function HomePage() {
                 href={EXPLORER_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-white transition flex items-center gap-1.5"
+                className="hover:text-white transition inline-flex items-center gap-2 group"
               >
+                <img src="/botchain-logo.png" alt="BOT Chain" className="h-4 w-4 rounded-sm object-contain shrink-0 group-hover:scale-105 transition" />
                 <span>BOT Chain Explorer:</span>
                 <span className="text-emerald-400 underline">https://scan.botchain.ai</span>
               </a>
@@ -461,13 +458,14 @@ export default function HomePage() {
           </div>
 
           <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-zinc-500">
-            <div>
-              Contract Address:{" "}
+            <div className="inline-flex items-center gap-1.5">
+              <img src="/botchain-logo.png" alt="BOT Chain" className="h-3.5 w-3.5 rounded-sm object-contain shrink-0" />
+              <span>Mainnet Contract:</span>
               <a
                 href={`${EXPLORER_URL}/address/${CONTRACT_ADDRESS}`}
                 target="_blank"
                 rel="noreferrer"
-                className="font-mono text-zinc-400 hover:text-emerald-400 underline"
+                className="font-mono text-zinc-300 hover:text-emerald-400 underline font-semibold"
               >
                 {CONTRACT_ADDRESS}
               </a>

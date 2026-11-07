@@ -273,9 +273,10 @@ export function CreateChallengeForm({ onSuccess }: CreateChallengeFormProps) {
                 href={`${EXPLORER_URL}/tx/${txHash}`}
                 target="_blank"
                 rel="noreferrer"
-                className="underline hover:text-white"
+                className="inline-flex items-center gap-1 text-emerald-400 underline hover:text-white"
               >
-                View Tx
+                <img src="/botchain-logo.png" alt="BOT Chain" className="h-3 w-3 rounded-sm object-contain" />
+                <span>View on BOT Chain Explorer</span>
               </a>
             )}
           </div>

@@ -185,9 +185,10 @@ export function CompleteModal({
                   href={`${EXPLORER_URL}/tx/${txHash}`}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-1 inline-flex items-center gap-1 underline hover:text-white"
+                  className="mt-1 inline-flex items-center gap-1.5 text-emerald-400 underline hover:text-white"
                 >
-                  <span>View on Explorer</span>
+                  <img src="/botchain-logo.png" alt="BOT Chain" className="h-3.5 w-3.5 rounded-sm object-contain" />
+                  <span>View on BOT Chain Explorer</span>
                   <ExternalLink className="h-3 w-3" />
                 </a>
               )}
