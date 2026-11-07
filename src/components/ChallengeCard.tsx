@@ -8,6 +8,7 @@ import {
   calculateTimeRemaining,
 } from "@/lib/utils";
 import { CompleteModal } from "./CompleteModal";
+import { EXPLORER_URL } from "@/config/wagmi";
 import {
   CheckCircle2,
   Clock,
@@ -145,7 +146,7 @@ export function ChallengeCard({
                 <User className="h-3.5 w-3.5 text-zinc-500" />
                 <span>Creator:</span>
                 <a
-                  href={`https://scan.bohr.life/address/${challenge.creator}`}
+                  href={`${EXPLORER_URL}/address/${challenge.creator}`}
                   target="_blank"
                   rel="noreferrer"
                   className="font-mono text-zinc-300 hover:text-brand-purple-light transition inline-flex items-center gap-1"

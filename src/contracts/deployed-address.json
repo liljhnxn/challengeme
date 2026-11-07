@@ -1,8 +1,10 @@
 {
-  "address": "0x29c6F99EBCE7739B5571bF0a8B85afE06fA34498",
-  "network": "botchain",
-  "chainId": 968,
+  "address": "0xdA38Ac96800Cb359419285b82242f43594173590",
+  "network": "botchainMainnet",
+  "chainId": 677,
+  "tokenSymbol": "BOT",
   "deployer": "0x83acc57bb9CDe889b248E9c740F5248637cd89f4",
-  "timestamp": "2026-11-01T05:17:30.000Z"
+  "timestamp": "2026-11-07T03:01:36.804Z",
+  "txHash": "0x5154bf43be91c3cac4a39a3fb098c755f40b7d28a04b0bdc00deb9bbee19994b",
+  "gasUsed": "1268797"
 }
-

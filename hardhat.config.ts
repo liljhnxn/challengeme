@@ -25,23 +25,52 @@ const config: HardhatUserConfig = {
       url: "http://127.0.0.1:8545",
       chainId: 31337,
     },
-    botchain: {
-      url: process.env.NEXT_PUBLIC_RPC_URL || "https://rpc.bohr.life",
+    botchainMainnet: {
+      url: "https://rpc.botchain.ai",
+      chainId: 677,
+      accounts: PRIVATE_KEY ? [PRIVATE_KEY.startsWith("0x") ? PRIVATE_KEY : `0x${PRIVATE_KEY}`] : [],
+    },
+    botchainTestnet: {
+      url: "https://rpc.bohr.life",
       chainId: 968,
+      accounts: PRIVATE_KEY ? [PRIVATE_KEY.startsWith("0x") ? PRIVATE_KEY : `0x${PRIVATE_KEY}`] : [],
+    },
+    // Alias for backwards compatibility
+    botchain: {
+      url: process.env.NEXT_PUBLIC_RPC_URL || "https://rpc.botchain.ai",
+      chainId: Number(process.env.NEXT_PUBLIC_CHAIN_ID) || 677,
       accounts: PRIVATE_KEY ? [PRIVATE_KEY.startsWith("0x") ? PRIVATE_KEY : `0x${PRIVATE_KEY}`] : [],
     },
   },
   etherscan: {
     apiKey: {
+      botchainMainnet: "empty",
+      botchainTestnet: "empty",
       botchain: "empty",
     },
     customChains: [
       {
-        network: "botchain",
+        network: "botchainMainnet",
+        chainId: 677,
+        urls: {
+          apiURL: "https://scan.botchain.ai/api",
+          browserURL: "https://scan.botchain.ai",
+        },
+      },
+      {
+        network: "botchainTestnet",
         chainId: 968,
         urls: {
           apiURL: "https://scan.bohr.life/api",
           browserURL: "https://scan.bohr.life",
+        },
+      },
+      {
+        network: "botchain",
+        chainId: 677,
+        urls: {
+          apiURL: "https://scan.botchain.ai/api",
+          browserURL: "https://scan.botchain.ai",
         },
       },
     ],

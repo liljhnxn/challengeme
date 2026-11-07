@@ -2,7 +2,7 @@
 
 **Tagline:** *Set a challenge. Prove you did it.*
 
-ChallengeMe is a decentralized Web3 personal accountability platform deployed on **Botchain Testnet**. Users connect MetaMask to set personal challenges, commit to firm deadlines, and publicly record immutable proof of completion directly on-chain.
+ChallengeMe is a decentralized Web3 personal accountability platform deployed on **Botchain Mainnet** (and Botchain Testnet). Users connect MetaMask to set personal challenges, commit to firm deadlines, and publicly record immutable proof of completion directly on-chain.
 
 ---
 
@@ -18,8 +18,19 @@ ChallengeMe is a decentralized Web3 personal accountability platform deployed on
 
 ---
 
-## ⛓️ Blockchain Configuration (Botchain Testnet)
+## ⛓️ Blockchain Configuration
 
+### 🚀 Botchain Mainnet (Default)
+| Parameter | Value |
+| :--- | :--- |
+| **Network Name** | Botchain Mainnet |
+| **Chain ID** | `677` |
+| **RPC URL** | `https://rpc.botchain.ai` |
+| **Block Explorer** | [https://scan.botchain.ai](https://scan.botchain.ai) |
+| **Native Currency** | BOT (18 decimals) |
+| **Contract Address** | [`0xdA38Ac96800Cb359419285b82242f43594173590`](https://scan.botchain.ai/address/0xdA38Ac96800Cb359419285b82242f43594173590#code) (Verified) |
+
+### 🧪 Botchain Testnet
 | Parameter | Value |
 | :--- | :--- |
 | **Network Name** | Botchain Testnet |
@@ -27,6 +38,7 @@ ChallengeMe is a decentralized Web3 personal accountability platform deployed on
 | **RPC URL** | `https://rpc.bohr.life` |
 | **Block Explorer** | [https://scan.bohr.life](https://scan.bohr.life) |
 | **Native Currency** | BOHR (18 decimals) |
+| **Contract Address** | [`0x29c6F99EBCE7739B5571bF0a8B85afE06fA34498`](https://scan.bohr.life/address/0x29c6F99EBCE7739B5571bF0a8B85afE06fA34498#code) (Verified) |
 
 ---
 

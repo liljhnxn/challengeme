@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useAccount, useWriteContract, useWaitForTransactionReceipt } from "wagmi";
 import { CHALLENGE_ME_ABI } from "@/contracts/ChallengeMeABI";
-import { CONTRACT_ADDRESS } from "@/config/wagmi";
+import { CONTRACT_ADDRESS, EXPLORER_URL } from "@/config/wagmi";
 import {
   Calendar,
   Clock,
@@ -270,7 +270,7 @@ export function CreateChallengeForm({ onSuccess }: CreateChallengeFormProps) {
             </div>
             {txHash && (
               <a
-                href={`https://scan.bohr.life/tx/${txHash}`}
+                href={`${EXPLORER_URL}/tx/${txHash}`}
                 target="_blank"
                 rel="noreferrer"
                 className="underline hover:text-white"

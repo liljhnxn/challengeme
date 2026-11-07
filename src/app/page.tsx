@@ -7,7 +7,7 @@ import { StatsOverview } from "@/components/StatsOverview";
 import { CreateChallengeForm } from "@/components/CreateChallengeForm";
 import { ChallengeCard } from "@/components/ChallengeCard";
 import { CHALLENGE_ME_ABI, ChallengeItem } from "@/contracts/ChallengeMeABI";
-import { CONTRACT_ADDRESS, botchainTestnet } from "@/config/wagmi";
+import { CONTRACT_ADDRESS, targetChainId, EXPLORER_URL } from "@/config/wagmi";
 import {
   Sparkles,
   Filter,
@@ -124,13 +124,15 @@ export default function HomePage() {
           <div className="mt-6 sm:mt-0 flex flex-col sm:items-end gap-2 text-xs font-mono text-zinc-400">
             <div className="flex items-center gap-1.5">
               <span className="text-zinc-500">Network:</span>
-              <span className="text-zinc-200">Botchain Testnet (968)</span>
+              <span className="text-zinc-200">
+                {targetChainId === 677 ? "Botchain Mainnet (677)" : "Botchain Testnet (968)"}
+              </span>
             </div>
             <div className="flex items-center gap-1.5">
               <span className="text-zinc-500">Contract:</span>
               {isContractConfigured ? (
                 <a
-                  href={`https://scan.bohr.life/address/${CONTRACT_ADDRESS}`}
+                  href={`${EXPLORER_URL}/address/${CONTRACT_ADDRESS}`}
                   target="_blank"
                   rel="noreferrer"
                   className="text-brand-purple-light underline hover:text-white inline-flex items-center gap-1"
@@ -375,15 +377,15 @@ export default function HomePage() {
           </div>
           <div className="flex items-center gap-4 text-zinc-400">
             <a
-              href="https://scan.bohr.life"
+              href={EXPLORER_URL}
               target="_blank"
               rel="noreferrer"
               className="hover:text-brand-purple-light transition"
             >
-              BohrScan Explorer
+              {targetChainId === 677 ? "BotchainScan Explorer" : "BohrScan Explorer"}
             </a>
             <a
-              href="https://rpc.bohr.life"
+              href={targetChainId === 677 ? "https://rpc.botchain.ai" : "https://rpc.bohr.life"}
               target="_blank"
               rel="noreferrer"
               className="hover:text-brand-purple-light transition"

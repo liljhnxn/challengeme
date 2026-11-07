@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useWriteContract, useWaitForTransactionReceipt } from "wagmi";
 import { CHALLENGE_ME_ABI, ChallengeItem } from "@/contracts/ChallengeMeABI";
-import { CONTRACT_ADDRESS } from "@/config/wagmi";
+import { CONTRACT_ADDRESS, EXPLORER_URL } from "@/config/wagmi";
 import {
   X,
   CheckCircle2,
@@ -182,12 +182,12 @@ export function CompleteModal({
               </div>
               {txHash && (
                 <a
-                  href={`https://scan.bohr.life/tx/${txHash}`}
+                  href={`${EXPLORER_URL}/tx/${txHash}`}
                   target="_blank"
                   rel="noreferrer"
                   className="mt-1 inline-flex items-center gap-1 underline hover:text-white"
                 >
-                  <span>View on BohrScan</span>
+                  <span>View on Explorer</span>
                   <ExternalLink className="h-3 w-3" />
                 </a>
               )}

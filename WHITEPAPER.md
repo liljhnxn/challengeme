@@ -2,11 +2,12 @@
 
 **Platform:** ChallengeMe  
 **Tagline:** *Set a challenge. Prove you did it.*  
-**Network:** Botchain Testnet (Chain ID: 968)  
-**Contract Address:** [`0x29c6F99EBCE7739B5571bF0a8B85afE06fA34498`](https://scan.bohr.life/address/0x29c6F99EBCE7739B5571bF0a8B85afE06fA34498#code)  
+**Network:** Botchain Mainnet (Chain ID: 677) & Testnet (Chain ID: 968)  
+**Mainnet Contract Address:** [`0xdA38Ac96800Cb359419285b82242f43594173590`](https://scan.botchain.ai/address/0xdA38Ac96800Cb359419285b82242f43594173590#code) (Verified)  
+**Testnet Contract Address:** [`0x29c6F99EBCE7739B5571bF0a8B85afE06fA34498`](https://scan.bohr.life/address/0x29c6F99EBCE7739B5571bF0a8B85afE06fA34498#code) (Verified)  
 **Repository:** [https://github.com/liljhnxn/challengeme](https://github.com/liljhnxn/challengeme)  
 **Date:** November 2026  
-**Document Version:** 1.0  
+**Document Version:** 1.1  
 
 ---
 
@@ -126,3 +127,4 @@ struct Challenge {
 * **Try the dApp:** Connect and set your first on-chain challenge.
 * **Explorer Verification:** [BohrScan Verified Code](https://scan.bohr.life/address/0x29c6F99EBCE7739B5571bF0a8B85afE06fA34498#code)
 * **GitHub Repository:** [https://github.com/liljhnxn/challengeme](https://github.com/liljhnxn/challengeme)
+
